@@ -42,11 +42,11 @@ https://www.arduino.cc/en/Main/Software
 
 実行方法
 
-自分のPCにクローンする
+自分のPCにクローンして、実行する
 ```bash
 git clone https://github.com/~
 python viewer.py
 ```
 
 # Note
-
+masterブランチにはPushしないこと！
