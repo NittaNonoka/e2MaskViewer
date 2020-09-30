@@ -43,7 +43,7 @@ https://www.arduino.cc/en/Main/Software
 
 自分のPCにクローンして、実行する
 
-Arduinoを繋ぐCOMポートの名称は適宜変えること(viewer.py)
+Arduinoを繋ぐCOMポートの名称は適宜変えてください(viewer.py)
 ```bash
 git clone https://github.com/NittaNonoka/e2MaskViewer.git
 python viewer.py
