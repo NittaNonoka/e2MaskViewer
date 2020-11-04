@@ -1,7 +1,7 @@
-# e2MaskZ用
+# e2MaskZ
 # Arduinoで読み取ったセンサの値をシリアル通信によってPythonで可視化
-import serial
 import datetime
+import serial
 import numpy as np
 from time import time
 import pygame 
@@ -25,7 +25,6 @@ def color(data_byte):
         return (255,255-(data_byte-768),0)
     else:
         return(255,255,255)
-
 
 class HMDSerialRead():
 
@@ -113,102 +112,93 @@ pygame.display.set_caption('Viewer')
 
 #画像の挿入、1がセンサもついた画像、2が顔だけの画像
 # img1 = pygame.image.load("sensor.jpg")
-# img2 = pygame.image.load("face_resize.jpg")
+img2 = pygame.image.load("./test.jpg")
     
 #SCREEN.blit(img1, (0, 0))
-# SCREEN.blit(img2, (0, 0))  
-SCREEN.fill(WHITE)
+SCREEN.blit(img2, (0, 0))  
+# SCREEN.fill(WHITE)
 
 is_running = True
+
 while is_running:
     # SensorData Update
     ser.UpdateSensorData()
     ser2.UpdateSensorData()
     sensorData.setSensorValues(ser.getSensorData())
-    sensorData2.setSensorValues(ser.getSensorData())
+    sensorData2.setSensorValues(ser2.getSensorData())
     data = sensorData.getSensorValues()+sensorData2.getSensorValues()
     #print(sensorData.getSensorValues())
-    print(data)
+    print(sensorData2.getSensorValues())
     
        
-    #right
-    # pygame.draw.rect(SCREEN,color(data[18]),(60,210,25,40))#18
-    # pygame.draw.rect(SCREEN,color(data[19]),(100,210,25,40))#19
-    # pygame.draw.rect(SCREEN,color(data[16]),(140,210,25,40))#16
-    # pygame.draw.rect(SCREEN,color(data[17]),(185,210,25,40))#17
-    # pygame.draw.rect(SCREEN,color(data[15]),(230,210,25,40))#15
+#right
 
-    pygame.draw.rect(SCREEN,color(data[0]),(60,210,30,30))#
-    pygame.draw.rect(SCREEN,color(data[21]),(125,210,30,30))#
-    pygame.draw.rect(SCREEN,color(data[22]),(190,210,30,30))#
+    pygame.draw.rect(SCREEN,color(data[35]),(60,210,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[37]),(125,210,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[39]),(190,210,30,30))#ok
+
+
+    pygame.draw.rect(SCREEN,color(data[31]),(50,320,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[34]),(110,320,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[25]),(170,320,30,30))#??
     
-    pygame.draw.rect(SCREEN,color(data[23]),(50,320,30,30))#7
-    pygame.draw.rect(SCREEN,color(data[24]),(110,320,30,30))#11
-    pygame.draw.rect(SCREEN,color(data[25]),(170,320,30,30))#13
-    
-    pygame.draw.rect(SCREEN,color(data[26]),(35,370,30,30))#10
-    pygame.draw.rect(SCREEN,color(data[27]),(105,370,30,30))#12
-    pygame.draw.rect(SCREEN,color(data[28]),(170,370,30,30))#8
+    pygame.draw.rect(SCREEN,color(data[26]),(35,370,30,30))#
+    pygame.draw.rect(SCREEN,color(data[33]),(105,370,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[28]),(170,370,30,30))#
         
-    pygame.draw.rect(SCREEN,color(data[20]),(60,420,30,30))#9
-    pygame.draw.rect(SCREEN,color(data[30]),(110,420,30,30))#1
-    pygame.draw.rect(SCREEN,color(data[31]),(165,420,30,30))#2
+    pygame.draw.rect(SCREEN,color(data[29]),(60,420,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[38]),(110,420,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[36]),(165,420,30,30))#ok
         
-    pygame.draw.rect(SCREEN,color(data[32]),(80,470,30,30))#0
-    pygame.draw.rect(SCREEN,color(data[33]),(130,470,30,30))#4
-    pygame.draw.rect(SCREEN,color(data[34]),(180,470,30,30))#5
+    pygame.draw.rect(SCREEN,color(data[22]),(80,470,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[32]),(130,470,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[34]),(180,470,30,30))#??
         
-    pygame.draw.rect(SCREEN,color(data[35]),(100,520,30,30))#3
-    pygame.draw.rect(SCREEN,color(data[36]),(150,520,30,30))#14
-    pygame.draw.rect(SCREEN,color(data[37]),(200,520,30,30))#6
+    pygame.draw.rect(SCREEN,color(data[28]),(100,520,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[36]),(150,520,30,30))#?
+    pygame.draw.rect(SCREEN,color(data[24]),(200,520,30,30))#ok
 
-    pygame.draw.rect(SCREEN,color(data[38]),(130,570,30,30))#3
-    pygame.draw.rect(SCREEN,color(data[39]),(180,570,30,30))#14
+    pygame.draw.rect(SCREEN,color(data[27]),(130,570,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[26]),(180,570,30,30))#ok
 
-    #left
-    # pygame.draw.rect(SCREEN,BLUE,(280,210,25,40))#
-    # pygame.draw.rect(SCREEN,BLUE,(325,210,25,40))#
-    # pygame.draw.rect(SCREEN,BLUE,(370,210,25,40))#
-    # pygame.draw.rect(SCREEN,BLUE,(415,210,25,40))#
-    # pygame.draw.rect(SCREEN,BLUE,(460,210,25,40))#
-
+#left
+# 2 0　反応なし
     pygame.draw.rect(SCREEN,color(data[14]),(330,210,30,30))#ok
-    pygame.draw.rect(SCREEN,color(data[16]),(395,210,30,30))#
-    pygame.draw.rect(SCREEN,color(data[17]),(460,210,30,30))#
+    pygame.draw.rect(SCREEN,color(data[16]),(395,210,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[17]),(460,210,30,30))#ok
     
-    pygame.draw.rect(SCREEN,BLUE,(330,320,30,30))#?
-    pygame.draw.rect(SCREEN,color(data[13]),(390,320,30,30))#
-    pygame.draw.rect(SCREEN,color(data[19]),(450,320,30,30))#
-    
-    pygame.draw.rect(SCREEN,color(data[28]),(340,370,30,30))#
-    pygame.draw.rect(SCREEN,color(data[11]),(400,370,30,30))#
-    pygame.draw.rect(SCREEN,color(data[18]),(460,370,30,30))#
-    
-    pygame.draw.rect(SCREEN,color(data[9]),(350,420,30,30))#
-    pygame.draw.rect(SCREEN,color(data[10]),(400,420,30,30))#
-    pygame.draw.rect(SCREEN,BLUE,(450,420,30,30))#?
-    
-    pygame.draw.rect(SCREEN,BLUE,(340,470,30,30))#
-    pygame.draw.rect(SCREEN,BLUE,(390,470,30,30))#
-    pygame.draw.rect(SCREEN,BLUE,(440,470,30,30))#
-    
-    pygame.draw.rect(SCREEN,BLUE,(310,520,30,30))#?
-    pygame.draw.rect(SCREEN,color(data[2]),(360,520,30,30))#
-    pygame.draw.rect(SCREEN,color(data[3]),(410,520,30,30))#
 
-    pygame.draw.rect(SCREEN,color(data[25]),(330,570,30,30))#
-    pygame.draw.rect(SCREEN,color(data[3]),(380,570,30,30))#
+    pygame.draw.rect(SCREEN,color(data[15]),(330,320,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[13]),(390,320,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[19]),(450,320,30,30))#ok
+    
+    pygame.draw.rect(SCREEN,color(data[8]),(340,370,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[11]),(400,370,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[18]),(460,370,30,30))#ok
+    
+    pygame.draw.rect(SCREEN,color(data[9]),(350,420,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[10]),(400,420,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[12]),(450,420,30,30))#ok
+    
+    pygame.draw.rect(SCREEN,color(data[1]),(340,470,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[4]),(390,470,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[7]),(440,470,30,30))#ok
+    
+    pygame.draw.rect(SCREEN,color(data[3]),(310,520,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[0]),(360,520,30,30))#壊れてる？
+    pygame.draw.rect(SCREEN,color(data[6]),(410,520,30,30))#ok
 
+    pygame.draw.rect(SCREEN,color(data[5]),(330,570,30,30))#ok
+    pygame.draw.rect(SCREEN,color(data[0]),(380,570,30,30))#壊れてる？
 
     pygame.display.flip()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             is_running = False
-        elif event.type == pygame.MOUSEBUTTONDOWN:#右クリックするとスクリーンショットを保存する
-            if event.button == 1:
-                print("スクリーンショットを保存しました。")
-                # pygame.image.save(SCREEN,"screenshot%s.jpg"%datetime.today().strftime("%Y%m%d-%H%M%S"))
+    #     elif event.type == pygame.MOUSEBUTTONDOWN:#右クリックするとスクリーンショットを保存する
+    #         if event.button == 1:
+    #             print("スクリーンショットを保存しました。")
+    #             # pygame.image.save(SCREEN,"screenshot%s.jpg"%datetime.today().strftime("%Y%m%d-%H%M%S"))
     
 pygame.quit()
-    
