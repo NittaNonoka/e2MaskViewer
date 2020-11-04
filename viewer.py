@@ -127,8 +127,8 @@ while is_running:
     sensorData.setSensorValues(ser.getSensorData())
     sensorData2.setSensorValues(ser2.getSensorData())
     data = sensorData.getSensorValues()+sensorData2.getSensorValues()
-    #print(sensorData.getSensorValues())
-    print(sensorData2.getSensorValues())
+    # print(sensorData.getSensorValues())
+    print(data)
     
        
 #right
